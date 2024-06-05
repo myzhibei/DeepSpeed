@@ -39,7 +39,7 @@ PDSH_MAX_FAN_OUT = 1024
 
 # On AISC compute, each node sets environment variables independently, want to prevent
 # exporting rank-0 env variables in case of heterogeneous compute.
-EXCLUDE_ENVS = {'AISC_JOB_NAME': ['NCCL_IB_HCA', 'UCX_NET_DEVICES']}
+EXCLUDE_ENVS = {'AISC_JOB_NAME': ['NCCL_IB_HCA', 'UCX_NET_DEVICES'],'CUTLASS':['CUTLASS_PATH']}
 
 
 def parse_args(args=None):
