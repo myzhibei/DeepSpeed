@@ -31,7 +31,7 @@ from ..autotuning import Autotuner
 from deepspeed.accelerator import get_accelerator
 
 DLTS_HOSTFILE = "/job/hostfile"
-EXPORT_ENVS = ['MLFLOW', 'PYTHON', 'MV2', 'UCX']
+EXPORT_ENVS = ['MLFLOW', 'PYTHON', 'MV2', 'UCX','CUTLASS_PATH']
 EXPORT_ENVS += NEBULA_EXPORT_ENVS
 DEEPSPEED_ENVIRONMENT_NAME = os.getenv("DS_ENV_FILE", ".deepspeed_env")
 DEEPSPEED_ENVIRONMENT_PATHS = [os.path.expanduser("~"), '.']
@@ -39,7 +39,7 @@ PDSH_MAX_FAN_OUT = 1024
 
 # On AISC compute, each node sets environment variables independently, want to prevent
 # exporting rank-0 env variables in case of heterogeneous compute.
-EXCLUDE_ENVS = {'AISC_JOB_NAME': ['NCCL_IB_HCA', 'UCX_NET_DEVICES'],'CUTLASS':['CUTLASS_PATH']}
+EXCLUDE_ENVS = {'AISC_JOB_NAME': ['NCCL_IB_HCA', 'UCX_NET_DEVICES']}
 
 
 def parse_args(args=None):
