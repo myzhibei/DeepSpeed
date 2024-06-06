@@ -455,7 +455,7 @@ def main(args=None):
                 "Unable to detect suitable master address via `hostname -I`, please manually specify one via --master_addr"
             )
             raise err
-        args.master_addr = result.decode('utf-8').split()[0]
+        args.master_addr = result.decode('utf-8').split()[-1] #change to net1 IB rdma
         if not args.master_addr:
             raise RuntimeError(
                 f"Unable to detect suitable master address via `hostname -I`, please manually specify one via --master_addr"
